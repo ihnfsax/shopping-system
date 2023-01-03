@@ -1,0 +1,10 @@
+Checks: >
+  google-*,
+  -google-readability-todo,
+  misc-*,
+  -misc-no-recursion,
+  cppcoreguidelines-*
+  -cppcoreguidelines-pro-bounds-pointer-arithmetic
+
+# Turn all the warnings from the checks above into errors.
+WarningsAsErrors: "*"

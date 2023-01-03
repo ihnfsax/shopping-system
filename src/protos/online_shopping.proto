@@ -1,0 +1,44 @@
+syntax = "proto3";
+
+package shopping;
+
+service OnlineShopping {
+  rpc GetItems (GetItemsRequest) returns (GetItemsReply) {}
+  // rpc Login (LoginRequest) returns (LoginReply) {}
+}
+
+message Item {
+  string id = 1;
+  string name = 2;
+  double price = 3;
+  uint32 count = 4;
+}
+
+message GetItemsRequest {
+  string shop_id = 1;
+}
+
+message GetItemsReply {
+  string shop_id = 1;
+  repeated Item items = 2;
+}
+
+enum RoleType {
+  CUSTOMER = 0;
+  MANAGER = 1;
+}
+
+message User {
+  RoleType type = 1;
+  string id = 2;
+  string password = 3;
+  string shop_id = 4;
+  double balance = 5;
+}
+
+message LoginRequest {
+  User user = 1;
+}
+
+message LoginReply {
+}

@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "id": "IX101",
+      "name": "苹果",
+      "price": 10.50,
+      "count": 20
+    },
+    {
+      "id": "IX102",
+      "name": "方便面",
+      "price": 5.50,
+      "count": 25
+    },
+    {
+      "id": "IX103",
+      "name": "牛奶",
+      "price": 2.50,
+      "count": 32
+    }
+  ],
+  "customers": [
+    {
+      "account": "20222208",
+      "password": "123456",
+      "balance": 43.50
+    }
+  ]
+}

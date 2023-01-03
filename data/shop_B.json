@@ -1,0 +1,29 @@
+{
+  "items": [
+    {
+      "id": "IX201",
+      "name": "橘子",
+      "price": 6.50,
+      "count": 20
+    },
+    {
+      "id": "IX102",
+      "name": "方便面",
+      "price": 5.50,
+      "count": 45
+    },
+    {
+      "id": "IX203",
+      "name": "香蕉",
+      "price": 12.50,
+      "count": 23
+    }
+  ],
+  "customers": [
+    {
+      "account": "20222104",
+      "password": "qwert",
+      "balance": 63.50
+    }
+  ]
+}
