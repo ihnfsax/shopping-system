@@ -7,7 +7,7 @@
 #include <unordered_map>
 
 #include "Shop.h"
-#include "online_shopping.grpc.pb.h"
+#include "src/protos/online_shopping.grpc.pb.h"
 
 class RPCServerImpl final : public shopping::OnlineShopping::Service {
  public:
