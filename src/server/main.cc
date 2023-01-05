@@ -13,7 +13,7 @@ using json = nlohmann::json;
 
 void RunServer(const std::string& server_id,
                const std::string& server_address) {
-  RPCServerImpl service(server_id);
+  RPCServer service(server_id, server_address);
 
   grpc::ServerBuilder builder;
   builder.AddListeningPort(server_address, grpc::InsecureServerCredentials());

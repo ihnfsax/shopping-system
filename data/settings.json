@@ -1,6 +1,6 @@
 {
-  "ip_addresses": {
-    "A": "localhost:5001",
-    "B": "localhost:5002"
-  }
+    "ip_addresses": {
+        "A": "localhost:5001",
+        "B": "localhost:5002"
+    }
 }

@@ -3,42 +3,141 @@ syntax = "proto3";
 package shopping;
 
 service OnlineShopping {
-  rpc GetItems (GetItemsRequest) returns (GetItemsReply) {}
-  // rpc Login (LoginRequest) returns (LoginReply) {}
+  // 用户登陆
+  rpc RPCLogin (LoginRequest) returns (LoginReply) {}
+  // 用户注册
+  rpc RPCRegister (RegisterRequest) returns (RegisterReply) {}
+  // 获取商品列表
+  rpc RPCListItems (ListItemsRequest) returns (ListItemsReply) {}
+  // 购买商品
+  rpc RPCPurchase (PurchaseRequest) returns (PurchaseReply) {}
+  // 修改或增加商品
+  rpc RPCEditOrAddItem (EditOrAddItemRequest) returns (EditOrAddItemReply) {}
+  // 删除商品
+  rpc RPCDeleteItem (DeleteItemRequest) returns (DeleteItemReply) {}
+  // 充值余额
+  rpc RPCMoreBalance (MoreBalanceRequest) returns (MoreBalanceReply) {}
+  // 请求加载商店
+  rpc RPCLoadShop (LoadShopRequest) returns (LoadShopReply) {}
+  // 查询服务器状态
+  rpc RPCCheckStatus (CheckStatusRequest) returns (CheckStatusReply) {}
 }
 
+// 规定了错误类型
+enum ErrorType {
+  NO_ERROR = 0;
+  SHOP_NOT_FOUND = 1;
+  USER_NOT_FOUND = 2;
+  WRONG_PASSWORD = 3;
+  USER_ALREADY_EXISTS = 4;
+  ITEM_NOT_FOUND = 5;
+  ITEM_NOT_ENOUGH = 6;
+  INSUFFICIENT_BALANCE = 7;
+  SHOP_ALREADY_RUNNING = 8;
+}
+  
+// 规定用户的类型
+enum UserType {
+  CUSTOMER = 0;
+  MANAGER = 1;
+}
+  
+// 商品
 message Item {
-  string id = 1;
-  string name = 2;
+  string item_id = 1;
+  string item_name = 2;
   double price = 3;
   uint32 count = 4;
 }
 
-message GetItemsRequest {
-  string shop_id = 1;
-}
-
-message GetItemsReply {
-  string shop_id = 1;
-  repeated Item items = 2;
-}
-
-enum RoleType {
-  CUSTOMER = 0;
-  MANAGER = 1;
-}
-
-message User {
-  RoleType type = 1;
-  string id = 2;
-  string password = 3;
-  string shop_id = 4;
-  double balance = 5;
-}
-
 message LoginRequest {
-  User user = 1;
+  UserType user_type = 1;
+  string user_id = 2;
+  string password = 3;
+  string shop_id = 4; // 当 user_type 为 MANAGER 时，shop_id 无意义
 }
 
 message LoginReply {
+  ErrorType error = 1;
+  double balance = 2; // 当 user_type 为 MANAGER 时，balance 无意义
+}
+
+message RegisterRequest {
+  UserType user_type = 1;
+  string user_id = 2;
+  string password = 3;
+  string shop_id = 4; // 当 user_type 为 MANAGER 时，shop_id 无意义
+}
+
+message RegisterReply {
+  ErrorType error = 1;
+  double balance = 2; // 始终为 0
+}
+
+message ListItemsRequest {
+  string shop_id = 1;
+}
+
+message ListItemsReply {
+  ErrorType error = 1;
+  repeated Item items = 2;
+}
+
+message PurchaseRequest {
+  string shop_id = 1;
+  string user_id = 2;
+  string item_id = 3;
+  uint32 count = 4; // 购买数量
+}
+
+message PurchaseReply {
+  ErrorType error = 1;
+  Item item = 2; // 商品最新信息
+  double balance = 3; // 购买商品后的余额
+}
+
+message EditOrAddItemRequest {
+  string shop_id = 1;
+  Item item = 2;
+}
+
+message EditOrAddItemReply {
+  ErrorType error = 1;
+  bool is_added = 2; // 为真表示添加了商品，为假表示修改了商品
+}
+
+message DeleteItemRequest {
+  string shop_id = 1;
+  string item_id = 2;
+}
+
+message DeleteItemReply {
+  ErrorType error = 1;
+}
+
+message MoreBalanceRequest {
+  string shop_id = 1;
+  string user_id = 2;
+  double more_balance = 3; // 由客户端确保是正数
+}
+
+message MoreBalanceReply {
+  ErrorType error = 1;
+  double balance = 2;
+}
+
+message LoadShopRequest {
+  string shop_id = 1;
+}
+
+message LoadShopReply {
+  ErrorType error = 1;
+  string server_address = 2;
+}
+
+message CheckStatusRequest {
+}
+
+message CheckStatusReply {
+  repeated string shop_ids = 1;
 }

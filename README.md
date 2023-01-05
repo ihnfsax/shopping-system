@@ -51,9 +51,9 @@ make install
 ```
 确认已经安装到 `third_party/grpc` 后，可以将源码目录 `third_party/grpc-src` 删除。
 
-### 安装 nlohmann_json
+### 安装 boost 和 nlohmann_json
 
-这个没有什么依赖，用系统包管理器进行安装即可。
+这两个没有什么依赖，用系统包管理器进行安装即可。
 
 ### 构建项目
 
@@ -69,4 +69,13 @@ cmake --build build -j $(nproc)
 
 ```bash
 ln -s ./build/compile_commands.json compile_commands.json
+```
+
+## 运行
+
+```bash
+cd bin
+./server A
+./server B
+./client
 ```

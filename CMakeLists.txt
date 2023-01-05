@@ -29,7 +29,7 @@ file(GLOB protos "src/protos/*.proto")
 get_target_property(grpc_cpp_plugin_location gRPC::grpc_cpp_plugin LOCATION)
 
 foreach(exe_target ${exe_targets})
-    target_link_libraries(${exe_target} PRIVATE protobuf::libprotobuf gRPC::grpc gRPC::grpc++)
+    target_link_libraries(${exe_target} PRIVATE protobuf::libprotobuf gRPC::grpc gRPC::grpc++ boost_filesystem boost_system)
     target_include_directories(${exe_target} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
     protobuf_generate(
         TARGET ${exe_target}

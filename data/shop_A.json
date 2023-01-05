@@ -1,29 +1,40 @@
 {
-  "items": [
-    {
-      "id": "IX101",
-      "name": "苹果",
-      "price": 10.50,
-      "count": 20
-    },
-    {
-      "id": "IX102",
-      "name": "方便面",
-      "price": 5.50,
-      "count": 25
-    },
-    {
-      "id": "IX103",
-      "name": "牛奶",
-      "price": 2.50,
-      "count": 32
-    }
-  ],
-  "customers": [
-    {
-      "account": "20222208",
-      "password": "123456",
-      "balance": 43.50
-    }
-  ]
+    "customers": [
+        {
+            "balance": 53.5,
+            "password": "123456",
+            "user_id": "20222208"
+        },
+        {
+            "balance": 0.0,
+            "password": "qwert",
+            "user_id": "203345"
+        }
+    ],
+    "items": [
+        {
+            "count": 18,
+            "item_id": "IX101",
+            "item_name": "苹果",
+            "price": 10.5
+        },
+        {
+            "count": 21,
+            "item_id": "IX102",
+            "item_name": "方便面",
+            "price": 5.5
+        },
+        {
+            "count": 35,
+            "item_id": "IX103",
+            "item_name": "牛奶",
+            "price": 3.5
+        },
+        {
+            "count": 54,
+            "item_id": "IX104",
+            "item_name": "面包",
+            "price": 5.5
+        }
+    ]
 }

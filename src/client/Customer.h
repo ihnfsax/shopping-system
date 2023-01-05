@@ -3,14 +3,22 @@
 
 #include <iostream>
 
-#include "Role.h"
+#include "User.h"
 
-class Customer : public Role {
+class Customer : public User {
  public:
-  using Role::LoginOrRegister;
-  using Role::Start;
+  using User::ListItems;
+  using User::LoginOrRegister;
+  using User::Start;
   void Login() override;
+  void Register() override;
   void MainMenu() override;
+  void ListItems() override;
+  void Purchase();
+  void MoreBalance();
+
+ private:
+  double balance_;
 };
 
 #endif  // CLIENT_CUSTOMER_H_

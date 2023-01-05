@@ -3,9 +3,9 @@
 
 #include <iostream>
 
-#include "Role.h"
+#include "User.h"
 
-class Manager : public Role {
+class Manager : public User {
  public:
   // Store() = default;
   // Store(Store&) = delete;
@@ -13,10 +13,14 @@ class Manager : public Role {
   // Store& operator=(Store const&) = delete;
   // Store& operator=(Store&&) = delete;
   // ~Store() override = default;
-  using Role::LoginOrRegister;
-  using Role::Start;
+  using User::LoginOrRegister;
+  using User::Start;
   void Login() override;
+  void Register() override;
   void MainMenu() override;
+  void ListItems() override;
+  void EditOrAddItem();
+  void DeleteItem();
 };
 
 #endif  // MANAGER_STORE_H_

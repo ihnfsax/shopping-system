@@ -1,8 +1,12 @@
 {
-  "managers": [
-    {
-      "account": "M3213",
-      "password": "poiuy"
-    }
-  ]
+    "managers": [
+        {
+            "password": "poiuy",
+            "user_id": "M3213"
+        },
+        {
+            "password": "23144",
+            "user_id": "M2700"
+        }
+    ]
 }

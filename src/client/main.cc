@@ -6,26 +6,23 @@
 #include "Manager.h"
 
 void WelcomePage() {
-  std::cout << "\n\n\n";
-  std::cout << "Welcome! Chooose your role: \n";
-  std::cout << "(1: Customer, 2: Manager) ";
-  int role_type = 0;
-  while (CommandReader::ReadLine<int>(role_type)) {
-    WelcomePage();
-  }
-  std::shared_ptr<Role> role;
-  switch (role_type) {
+  std::string prompt_message =
+      "Welcome! Choose your user type: \n(1: Customer, 2: Manager) ";
+  size_t user_type = CommandReader::ReadOption(prompt_message, 1, 2);
+
+  std::shared_ptr<User> user;
+  switch (user_type) {
     case 1:
-      role = std::make_shared<Customer>();
+      user = std::make_shared<Customer>();
       break;
     case 2:
-      role = std::make_shared<Manager>();
+      user = std::make_shared<Manager>();
       break;
     default:
       WelcomePage();
   }
 
-  role->Start();
+  user->Start();
 }
 
 int main() {

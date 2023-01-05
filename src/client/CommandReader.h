@@ -1,27 +1,19 @@
 #ifndef CLIENT_COMMANDREADER_H_
 #define CLIENT_COMMANDREADER_H_
-#include <boost/algorithm/string/trim.hpp>
-#include <boost/lexical_cast.hpp>
-#include <iostream>
+
+#include <cstddef>
+#include <cstdint>
 #include <string>
-#include <typeinfo>
 
 class CommandReader {
  public:
-  template <typename T>
-  static bool ReadLine(T& res) {
-    std::string input_line;
-    std::getline(std::cin, input_line);
-    boost::trim(input_line);
-    T temp;
-    try {
-      temp = boost::lexical_cast<T>(input_line);
-    } catch (const boost::bad_lexical_cast& e) {
-      return true;
-    }
-    res = temp;
-    return false;
-  }
+  static std::string ReadString(const std::string& prompt_message);
+
+  static size_t ReadOption(const std::string& prompt_message,
+                           size_t min_option = 0, size_t max_option = SIZE_MAX);
+
+  static double ReadDouble(const std::string& prompt_message,
+                           bool is_positive = true);
 };
 
 #endif  // CLIENT_COMMANDREADER_H_
