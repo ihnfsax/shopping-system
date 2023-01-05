@@ -27,7 +27,7 @@ void Customer::Login() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -35,7 +35,7 @@ void Customer::Login() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -102,7 +102,7 @@ void Customer::Register() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -110,7 +110,7 @@ void Customer::Register() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -211,7 +211,7 @@ void Customer::Purchase() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -219,7 +219,7 @@ void Customer::Purchase() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -294,7 +294,7 @@ void Customer::MoreBalance() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -302,7 +302,7 @@ void Customer::MoreBalance() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }

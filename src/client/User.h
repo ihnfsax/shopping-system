@@ -12,19 +12,19 @@
 
 struct ClientInfo {
  public:
-  ClientInfo(const std::string& shop_id, const std::string& server_address,
+  ClientInfo(const std::string& server_id, const std::string& server_address,
              std::shared_ptr<grpc::Channel> channel)
-      : shop_id_(shop_id),
+      : server_id_(server_id),
         server_address_(server_address),
         stub_(shopping::OnlineShopping::NewStub(channel)) {}
-  const std::string& shop_id() const { return shop_id_; }
+  const std::string& server_id() const { return server_id_; }
   const std::string& server_address() const { return server_address_; }
   const std::unique_ptr<shopping::OnlineShopping::Stub>& stub() const {
     return stub_;
   }
 
  private:
-  std::string shop_id_;
+  std::string server_id_;
   std::string server_address_;
   std::unique_ptr<shopping::OnlineShopping::Stub> stub_;
 };

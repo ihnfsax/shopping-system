@@ -27,7 +27,7 @@ void Manager::Login() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -35,7 +35,7 @@ void Manager::Login() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -93,7 +93,7 @@ void Manager::Register() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -101,7 +101,7 @@ void Manager::Register() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -190,7 +190,7 @@ void Manager::EditOrAddItem() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -198,7 +198,7 @@ void Manager::EditOrAddItem() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -252,7 +252,7 @@ void Manager::DeleteItem() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -260,7 +260,7 @@ void Manager::DeleteItem() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }

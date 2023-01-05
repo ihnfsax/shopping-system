@@ -36,7 +36,7 @@ void User::Start() {
   std::string prompt_message =
       "Choose the shop server you want to connect to: \n(";
   for (size_t i = 0; i < clients_.size(); ++i) {
-    prompt_message += std::to_string(i + 1) + ": " + clients_[i].shop_id();
+    prompt_message += std::to_string(i + 1) + ": " + clients_[i].server_id();
     if (i != clients_.size() - 1) {
       prompt_message += ", ";
     }
@@ -45,10 +45,10 @@ void User::Start() {
   curr_srv_idx_ = CommandReader::ReadOption(prompt_message, 1, clients_.size());
   --curr_srv_idx_;
 
-  std::cout << "\033[1;32mShop server " << clients_[curr_srv_idx_].shop_id()
+  std::cout << "\033[1;32mShop server " << clients_[curr_srv_idx_].server_id()
             << " chosen.\033[0m" << std::endl;
 
-  shop_id_ = clients_[curr_srv_idx_].shop_id();
+  shop_id_ = clients_[curr_srv_idx_].server_id();
 
   LoginOrRegister();
 }
@@ -82,7 +82,7 @@ bool User::ListItemsInternal() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -90,7 +90,7 @@ bool User::ListItemsInternal() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -136,7 +136,7 @@ bool User::LoadShopInternal() {
   // Connection failed
   if (!status.ok()) {
     if (status.error_code() == grpc::StatusCode::UNAVAILABLE) {
-      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].shop_id()
+      std::cout << "\033[1;31mServer " << clients_[curr_srv_idx_].server_id()
                 << "(" << clients_[curr_srv_idx_].server_address()
                 << ") is unavailable.\033[0m" << std::endl;
       if (TryOtherServers()) {
@@ -144,7 +144,7 @@ bool User::LoadShopInternal() {
                      "later.\033[0m"
                   << std::endl;
       } else {
-        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].shop_id()
+        std::cout << "\033[1;32mServer " << clients_[curr_srv_idx_].server_id()
                   << "(" << clients_[curr_srv_idx_].server_address()
                   << ") is available, please try again.\033[0m" << std::endl;
       }
@@ -158,7 +158,7 @@ bool User::LoadShopInternal() {
   // Initialization
   auto iter = clients_.begin();
   std::advance(iter, curr_srv_idx_);
-  std::string shop_id = iter->shop_id();
+  std::string server_id = iter->server_id();
   grpc::ChannelArguments channel_args;
   channel_args.SetInt(GRPC_ARG_ENABLE_HTTP_PROXY, 0);
 
@@ -173,7 +173,7 @@ bool User::LoadShopInternal() {
                 << "'s original server is running on" << reply.server_address()
                 << ". Try to connect...\033[0m" << std::endl;
       iter = clients_.erase(iter);
-      clients_.insert(iter, ClientInfo(shop_id, reply.server_address(),
+      clients_.insert(iter, ClientInfo(server_id, reply.server_address(),
                                        grpc::CreateCustomChannel(
                                            reply.server_address(),
                                            grpc::InsecureChannelCredentials(),
