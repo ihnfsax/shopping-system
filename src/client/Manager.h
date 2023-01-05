@@ -7,12 +7,6 @@
 
 class Manager : public User {
  public:
-  // Store() = default;
-  // Store(Store&) = delete;
-  // Store(Store&&) = delete;
-  // Store& operator=(Store const&) = delete;
-  // Store& operator=(Store&&) = delete;
-  // ~Store() override = default;
   using User::LoginOrRegister;
   using User::Start;
   void Login() override;
