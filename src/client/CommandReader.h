@@ -9,8 +9,8 @@ class CommandReader {
  public:
   static std::string ReadString(const std::string& prompt_message);
 
-  static size_t ReadOption(const std::string& prompt_message,
-                           size_t min_option = 0, size_t max_option = SIZE_MAX);
+  static size_t ReadUint(const std::string& prompt_message,
+                         size_t min_value = 0, size_t max_value = SIZE_MAX);
 
   static double ReadDouble(const std::string& prompt_message,
                            bool is_positive = true);

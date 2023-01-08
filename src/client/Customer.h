@@ -7,7 +7,6 @@
 
 class Customer : public User {
  public:
-  using User::ListItems;
   using User::LoginOrRegister;
   using User::Start;
   void Login() override;

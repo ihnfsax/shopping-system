@@ -19,8 +19,8 @@ std::string CommandReader::ReadString(const std::string& prompt_message) {
   return input_line;
 }
 
-size_t CommandReader::ReadOption(const std::string& prompt_message,
-                                 size_t min_option, size_t max_option) {
+size_t CommandReader::ReadUint(const std::string& prompt_message,
+                               size_t min_option, size_t max_option) {
   size_t ret = 0;
   do {
     std::cout << prompt_message << std::flush;

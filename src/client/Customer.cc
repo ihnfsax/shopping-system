@@ -154,7 +154,7 @@ void Customer::MainMenu() {
   std::string prompt_message =
       "Welcome to the main menu!\nWhich function you'd like to perform?\n(1: "
       "List all items, 2: Buy something, 3: Add balance 4: Logout) ";
-  size_t choice = CommandReader::ReadOption(prompt_message, 1, 4);
+  size_t choice = CommandReader::ReadUint(prompt_message, 1, 4);
 
   switch (choice) {
     case 1:
@@ -188,7 +188,7 @@ void Customer::Purchase() {
   std::string prompt_message = "Please enter the item id: ";
   std::string item_id = CommandReader::ReadString(prompt_message);
   prompt_message = "Please enter the quantity: ";
-  size_t buy_count = CommandReader::ReadOption(prompt_message, 0);
+  size_t buy_count = CommandReader::ReadUint(prompt_message, 0);
 
   if (buy_count == 0) {
     std::cout << "\033[1;31mInvalid quantity. Please try again.\033[0m"

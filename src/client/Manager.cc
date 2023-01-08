@@ -139,7 +139,7 @@ void Manager::MainMenu() {
       "Welcome to the main menu!\nWhich function you'd like to perform?\n(1: "
       "List all items, 2: Edit or add one product, 3: Delete one product, 4: "
       "Logout) ";
-  size_t choice = CommandReader::ReadOption(prompt_message, 1, 4);
+  size_t choice = CommandReader::ReadUint(prompt_message, 1, 4);
 
   switch (choice) {
     case 1:
@@ -173,7 +173,7 @@ void Manager::EditOrAddItem() {
   prompt_message = "Please enter the item price: ";
   double price = CommandReader::ReadDouble(prompt_message);
   prompt_message = "Please enter the item count: ";
-  uint32_t count = CommandReader::ReadOption(prompt_message);
+  uint32_t count = CommandReader::ReadUint(prompt_message);
 
   // RPC
   grpc::ClientContext context;

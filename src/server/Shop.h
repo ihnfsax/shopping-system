@@ -23,10 +23,10 @@ class Shop {
   void SaveData(const std::string& shop_id);
   const std::unordered_map<std::string, shopping::Item>& GetItems() const;
   const std::unordered_map<std::string, CustomerInfo>& GetCustomers() const;
-  // return true if customer is added.
-  bool SetCustomer(const CustomerInfo& customer);
   // return true if item is added.
   bool SetItem(const shopping::Item& item);
+  // return true if customer is added.
+  bool SetCustomer(const CustomerInfo& customer);
   void DeleteItem(const std::string& item_id);
 
  private:

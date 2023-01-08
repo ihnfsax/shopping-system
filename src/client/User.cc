@@ -42,7 +42,7 @@ void User::Start() {
     }
   }
   prompt_message += ") ";
-  curr_srv_idx_ = CommandReader::ReadOption(prompt_message, 1, clients_.size());
+  curr_srv_idx_ = CommandReader::ReadUint(prompt_message, 1, clients_.size());
   --curr_srv_idx_;
 
   std::cout << "\033[1;32mShop server " << clients_[curr_srv_idx_].server_id()
@@ -56,7 +56,7 @@ void User::Start() {
 void User::LoginOrRegister() {
   std::string prompt_message =
       "Do you want to login or register?\n(1: login, 2: register) ";
-  size_t login_or_register = CommandReader::ReadOption(prompt_message, 1, 2);
+  size_t login_or_register = CommandReader::ReadUint(prompt_message, 1, 2);
 
   switch (login_or_register) {
     case 1:

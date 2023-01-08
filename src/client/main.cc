@@ -8,7 +8,7 @@
 void WelcomePage() {
   std::string prompt_message =
       "Welcome! Choose your user type: \n(1: Customer, 2: Manager) ";
-  size_t user_type = CommandReader::ReadOption(prompt_message, 1, 2);
+  size_t user_type = CommandReader::ReadUint(prompt_message, 1, 2);
 
   std::shared_ptr<User> user;
   switch (user_type) {
